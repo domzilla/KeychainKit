@@ -1,6 +1,6 @@
 //
 //  KeychainItemAccesssibility.swift
-//  KeychainWrapper
+//  KeychainKit
 //
 //  Created by Mars on 2019/7/9.
 //  Copyright © 2019 Mars. All rights reserved.
@@ -18,9 +18,7 @@ public enum KeychainItemAccessibility {
   case whenPasscodeSetThisDeviceOnly
   case whenUnlocked // The default case.
   case whenUnlockedThisDeviceOnly
-  
-  /// `always and alwaysThisDeviceOnly` are deprecated in iOS 12.0
-  
+    
   /// CFString -> KeychainItemAccessibility
   static func accessbilityForAttributeValue(_ keychainAttrValue: CFString) -> KeychainItemAccessibility? {
     for (key, value) in keychainAccessibilityLookup {

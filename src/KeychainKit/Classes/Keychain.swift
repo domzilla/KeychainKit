@@ -1,6 +1,6 @@
 //
-//  KeychainWrapper.swift
-//  KeychainWrapper
+//  Keychain.swift
+//  KeychainKit
 //
 //  Created by Mars on 2019/7/9.
 //  Copyright © 2019 Mars. All rights reserved.
@@ -20,20 +20,20 @@ private let secAttrAccount        : String = kSecAttrAccount         as String
 private let secAttrAccessGroup    : String = kSecAttrAccessGroup     as String
 private let secReturnAttributes   : String = kSecReturnAttributes    as String
 
-open class KeychainWrapper {
+open class Keychain {
   /// Singleton
-  public static let `default` = KeychainWrapper()
+  public static let `default` = Keychain()
   
   /// Attributes
   private (set) public var serviceName: String
   private (set) public var accessGroup: String?
   private static let defaultServiceName: String = {
-    Bundle.main.bundleIdentifier ?? "SwiftKeychainWrapper"
+    Bundle.main.bundleIdentifier ?? "Keychain"
   }()
   
   /// Initializers
   
-  /// Create an instance of `KeychainWrapper` with a custom service name and optional access group.
+  /// Create an instance of `Keychain` with a custom service name and optional access group.
   ///
   /// - parameter serviceName:
   /// - parameter accessGroup:
@@ -43,7 +43,7 @@ open class KeychainWrapper {
   }
   
   private convenience init() {
-    self.init(serviceName: KeychainWrapper.defaultServiceName)
+    self.init(serviceName: Keychain.defaultServiceName)
   }
   
   /// Public methods
