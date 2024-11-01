@@ -20,15 +20,21 @@ class ViewController: UIViewController {
 
     @IBAction func writeButtonAction(_ sender: Any?) {
         
+        var dict: [String: String] = [:]
+        
         if let numberString = numberTextField.text {
             if let number = Int(numberString) {
                 Keychain.default.set(number, forKey: "my.number.key")
+                dict["number"] = numberString
             }
         }
         
         if let string = stringTextField.text {
             Keychain.default.set(string, forKey: "my.string.key")
+            dict["string"] = string
         }
+        
+        Keychain.default.set(dict, forKey: "my.dict.key")
     }
     
     @IBAction func readButtonAction(_ sender: Any?) {
@@ -40,6 +46,10 @@ class ViewController: UIViewController {
         }
 
         stringTextField.text = Keychain.default.string(forKey: "my.string.key")
+        
+        if let dict = Keychain.default.object(of: [String: String].self, forKey: "my.dict.key") {
+            print(dict)
+        }
     }
     
     @IBAction func removeButtonAction (_ sender: Any?) {
@@ -48,6 +58,8 @@ class ViewController: UIViewController {
         
         Keychain.default.removeObject(forKey: "my.string.key")
         stringTextField.text = nil
+        
+        Keychain.default.removeObject(forKey: "my.dict.key")
     }
 }
 
