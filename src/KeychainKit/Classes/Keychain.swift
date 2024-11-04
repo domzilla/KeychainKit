@@ -20,6 +20,14 @@ private let secAttrAccount        : String = kSecAttrAccount         as String
 private let secAttrAccessGroup    : String = kSecAttrAccessGroup     as String
 private let secReturnAttributes   : String = kSecReturnAttributes    as String
 
+
+@objc public class KeychainAccessGroup: NSObject {
+    @objc public static func setDefault(_ defaultAccessGroup: String?) {
+        Keychain.defaultAccessGroup = defaultAccessGroup
+    }
+}
+
+
 open class Keychain {
   /// Singleton
   public static let `default` = Keychain()
@@ -30,6 +38,7 @@ open class Keychain {
   private static let defaultServiceName: String = {
     Bundle.main.bundleIdentifier ?? "Keychain"
   }()
+    public static var defaultAccessGroup: String?
   
   /// Initializers
   
@@ -43,7 +52,7 @@ open class Keychain {
   }
   
   private convenience init() {
-    self.init(serviceName: Keychain.defaultServiceName)
+      self.init(serviceName: Keychain.defaultServiceName, accessGroup: Keychain.defaultAccessGroup)
   }
   
   /// Public methods
