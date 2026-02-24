@@ -3,16 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 77;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F24B08D92C9C306E00345376 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24B08D82C9C306E00345376 /* AppDelegate.swift */; };
-		F24B08DB2C9C306E00345376 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24B08DA2C9C306E00345376 /* SceneDelegate.swift */; };
-		F24B08DD2C9C306E00345376 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24B08DC2C9C306E00345376 /* ViewController.swift */; };
-		F24B08E02C9C306E00345376 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F24B08DF2C9C306E00345376 /* Base */; };
-		F24B08E22C9C306F00345376 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F24B08E12C9C306F00345376 /* Assets.xcassets */; };
-		F24B08E52C9C306F00345376 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = F24B08E42C9C306F00345376 /* Base */; };
 		F24B08F62C9C30CF00345376 /* KeychainKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F24B08F12C9C308800345376 /* KeychainKit.framework */; };
 		F24B08F72C9C30CF00345376 /* KeychainKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F24B08F12C9C308800345376 /* KeychainKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
@@ -50,15 +44,29 @@
 
 /* Begin PBXFileReference section */
 		F24B08D52C9C306E00345376 /* KeychainKit Test.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "KeychainKit Test.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F24B08D82C9C306E00345376 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F24B08DA2C9C306E00345376 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		F24B08DC2C9C306E00345376 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		F24B08DF2C9C306E00345376 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F24B08E12C9C306F00345376 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F24B08E42C9C306F00345376 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F24B08E62C9C306F00345376 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F24B08EC2C9C308800345376 /* KeychainKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = KeychainKit.xcodeproj; path = ../src/KeychainKit.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F25D68B72F4D896000DD1ED0 /* Exceptions for "KeychainKit Test" folder in "KeychainKit Test" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resources/Info.plist,
+			);
+			target = F24B08D42C9C306E00345376 /* KeychainKit Test */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F25D68AF2F4D895700DD1ED0 /* KeychainKit Test */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F25D68B72F4D896000DD1ED0 /* Exceptions for "KeychainKit Test" folder in "KeychainKit Test" target */,
+			);
+			path = "KeychainKit Test";
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F24B08D22C9C306E00345376 /* Frameworks */ = {
@@ -76,7 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				F24B08EC2C9C308800345376 /* KeychainKit.xcodeproj */,
-				F24B08D72C9C306E00345376 /* KeychainKit Test */,
+				F25D68AF2F4D895700DD1ED0 /* KeychainKit Test */,
 				F24B08D62C9C306E00345376 /* Products */,
 				F24B08F22C9C309000345376 /* Frameworks */,
 			);
@@ -88,20 +96,6 @@
 				F24B08D52C9C306E00345376 /* KeychainKit Test.app */,
 			);
 			name = Products;
-			sourceTree = "<group>";
-		};
-		F24B08D72C9C306E00345376 /* KeychainKit Test */ = {
-			isa = PBXGroup;
-			children = (
-				F24B08D82C9C306E00345376 /* AppDelegate.swift */,
-				F24B08DA2C9C306E00345376 /* SceneDelegate.swift */,
-				F24B08DC2C9C306E00345376 /* ViewController.swift */,
-				F24B08DE2C9C306E00345376 /* Main.storyboard */,
-				F24B08E12C9C306F00345376 /* Assets.xcassets */,
-				F24B08E32C9C306F00345376 /* LaunchScreen.storyboard */,
-				F24B08E62C9C306F00345376 /* Info.plist */,
-			);
-			path = "KeychainKit Test";
 			sourceTree = "<group>";
 		};
 		F24B08ED2C9C308800345376 /* Products */ = {
@@ -136,6 +130,9 @@
 			dependencies = (
 				F24B08F52C9C309500345376 /* PBXTargetDependency */,
 			);
+			fileSystemSynchronizedGroups = (
+				F25D68AF2F4D895700DD1ED0 /* KeychainKit Test */,
+			);
 			name = "KeychainKit Test";
 			productName = "KeychainKit Test";
 			productReference = F24B08D52C9C306E00345376 /* KeychainKit Test.app */;
@@ -149,7 +146,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					F24B08D42C9C306E00345376 = {
 						CreatedOnToolsVersion = 15.4;
@@ -157,7 +154,6 @@
 				};
 			};
 			buildConfigurationList = F24B08D02C9C306E00345376 /* Build configuration list for PBXProject "KeychainKit Test" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -165,6 +161,7 @@
 				Base,
 			);
 			mainGroup = F24B08CC2C9C306E00345376;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = F24B08D62C9C306E00345376 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -195,9 +192,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F24B08E22C9C306F00345376 /* Assets.xcassets in Resources */,
-				F24B08E52C9C306F00345376 /* Base in Resources */,
-				F24B08E02C9C306E00345376 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,9 +202,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F24B08DD2C9C306E00345376 /* ViewController.swift in Sources */,
-				F24B08D92C9C306E00345376 /* AppDelegate.swift in Sources */,
-				F24B08DB2C9C306E00345376 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -223,25 +214,6 @@
 			targetProxy = F24B08F42C9C309500345376 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		F24B08DE2C9C306E00345376 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F24B08DF2C9C306E00345376 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		F24B08E32C9C306F00345376 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				F24B08E42C9C306F00345376 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		F24B08E72C9C306F00345376 /* Debug */ = {
@@ -372,7 +344,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 568T6RKXH7;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "KeychainKit Test/Info.plist";
+				INFOPLIST_FILE = "KeychainKit Test/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -400,7 +372,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 568T6RKXH7;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "KeychainKit Test/Info.plist";
+				INFOPLIST_FILE = "KeychainKit Test/Resources/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
