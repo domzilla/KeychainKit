@@ -3,25 +3,33 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 77;
 	objects = {
-
-/* Begin PBXBuildFile section */
-		F24B08BC2C9C2CD300345376 /* KeychainKit.h in Headers */ = {isa = PBXBuildFile; fileRef = F24B08BB2C9C2CD300345376 /* KeychainKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		F24B08C62C9C2D5800345376 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24B08C22C9C2D5800345376 /* Keychain.swift */; };
-		F24B08C72C9C2D5800345376 /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24B08C32C9C2D5800345376 /* KeychainItem.swift */; };
-		F24B08C82C9C2D5800345376 /* KeychainItemAccesssibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = F24B08C42C9C2D5800345376 /* KeychainItemAccesssibility.swift */; };
-		F24B08CB2C9C2D6A00345376 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = F24B08CA2C9C2D6A00345376 /* PrivacyInfo.xcprivacy */; };
-/* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F24B08B82C9C2CD300345376 /* KeychainKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KeychainKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		F24B08BB2C9C2CD300345376 /* KeychainKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeychainKit.h; sourceTree = "<group>"; };
-		F24B08C22C9C2D5800345376 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
-		F24B08C32C9C2D5800345376 /* KeychainItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
-		F24B08C42C9C2D5800345376 /* KeychainItemAccesssibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccesssibility.swift; sourceTree = "<group>"; };
-		F24B08CA2C9C2D6A00345376 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F225D1CA2F4C77DC00BA7968 /* Exceptions for "KeychainKit" folder in "KeychainKit" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			publicHeaders = (
+				Classes/KeychainKit.h,
+			);
+			target = F24B08B72C9C2CD300345376 /* KeychainKit */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		F225D1C42F4C77BC00BA7968 /* KeychainKit */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F225D1CA2F4C77DC00BA7968 /* Exceptions for "KeychainKit" folder in "KeychainKit" target */,
+			);
+			path = KeychainKit;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		F24B08B52C9C2CD300345376 /* Frameworks */ = {
@@ -34,10 +42,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F24138A92F4CB2CE00BE45E0 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F24B08AE2C9C2CD300345376 = {
 			isa = PBXGroup;
 			children = (
-				F24B08BA2C9C2CD300345376 /* KeychainKit */,
+				F225D1C42F4C77BC00BA7968 /* KeychainKit */,
+				F24138A92F4CB2CE00BE45E0 /* Frameworks */,
 				F24B08B92C9C2CD300345376 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,34 +66,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F24B08BA2C9C2CD300345376 /* KeychainKit */ = {
-			isa = PBXGroup;
-			children = (
-				F24B08BB2C9C2CD300345376 /* KeychainKit.h */,
-				F24B08C52C9C2D5800345376 /* Classes */,
-				F24B08C92C9C2D5E00345376 /* Ressources */,
-			);
-			path = KeychainKit;
-			sourceTree = "<group>";
-		};
-		F24B08C52C9C2D5800345376 /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				F24B08C22C9C2D5800345376 /* Keychain.swift */,
-				F24B08C32C9C2D5800345376 /* KeychainItem.swift */,
-				F24B08C42C9C2D5800345376 /* KeychainItemAccesssibility.swift */,
-			);
-			path = Classes;
-			sourceTree = "<group>";
-		};
-		F24B08C92C9C2D5E00345376 /* Ressources */ = {
-			isa = PBXGroup;
-			children = (
-				F24B08CA2C9C2D6A00345376 /* PrivacyInfo.xcprivacy */,
-			);
-			name = Ressources;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -85,7 +73,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F24B08BC2C9C2CD300345376 /* KeychainKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +92,9 @@
 			);
 			dependencies = (
 			);
+			fileSystemSynchronizedGroups = (
+				F225D1C42F4C77BC00BA7968 /* KeychainKit */,
+			);
 			name = KeychainKit;
 			productName = KeychainKit;
 			productReference = F24B08B82C9C2CD300345376 /* KeychainKit.framework */;
@@ -117,7 +107,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					F24B08B72C9C2CD300345376 = {
 						CreatedOnToolsVersion = 15.4;
@@ -125,7 +115,6 @@
 				};
 			};
 			buildConfigurationList = F24B08B22C9C2CD300345376 /* Build configuration list for PBXProject "KeychainKit" */;
-			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -133,6 +122,7 @@
 				Base,
 			);
 			mainGroup = F24B08AE2C9C2CD300345376;
+			preferredProjectObjectVersion = 77;
 			productRefGroup = F24B08B92C9C2CD300345376 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -147,7 +137,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F24B08CB2C9C2D6A00345376 /* PrivacyInfo.xcprivacy in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -158,9 +147,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F24B08C82C9C2D5800345376 /* KeychainItemAccesssibility.swift in Sources */,
-				F24B08C72C9C2D5800345376 /* KeychainItem.swift in Sources */,
-				F24B08C62C9C2D5800345376 /* Keychain.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

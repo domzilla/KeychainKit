@@ -33,8 +33,8 @@ open class Keychain {
   public static let `default` = Keychain()
   
   /// Attributes
-  private (set) public var serviceName: String
-  private (set) public var accessGroup: String?
+  private(set) public var serviceName: String
+  private(set) public var accessGroup: String?
   private static let defaultServiceName: String = {
     Bundle.main.bundleIdentifier ?? "Keychain"
   }()
