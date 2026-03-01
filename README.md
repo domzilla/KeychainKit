@@ -1,67 +1,131 @@
+# KeychainKit
 
-KeychainKit is a lightweight Swift wrapper for the iOS Keychain. It makes accessing the Keychain as simple as using `UserDefaults`. It is based on [KeychainWrapper](https://github.com/puretears/KeychainWrapper).
+A lightweight Swift wrapper for the iOS and macOS Keychain — as simple as `UserDefaults`.
 
-### KeychainKit 101
+[![Platform](https://img.shields.io/badge/platforms-iOS%2015.0%20|%20macOS%2013.0%20|%20Mac%20Catalyst-blue.svg)](https://developer.apple.com/documentation/security/keychain_services)
+[![Swift](https://img.shields.io/badge/Swift-6-orange.svg)](https://swift.org)
+[![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](LICENSE)
 
-The simplest use case is by using the `default` singleton, allowing you to save and load data in a way similar to manipulating `UserDefaults`.
+## Features
 
-You can add values to the Keychain. All `set` methods return a `Bool` to indicate whether the data was saved successfully. If the key already exists, the data will be overwritten.
+- **Simple API** — `UserDefaults`-like interface for Keychain access
+- **Codable support** — Store and retrieve any `Codable` type
+- **Property wrappers** — Declarative Keychain storage with `@KeychainStoreString`, `@KeychainStoreNumber`, and `@KeychainStoreObject`
+- **Access groups** — Share Keychain items between apps and extensions
+- **Configurable accessibility** — Control when Keychain items are accessible
+- **Multi-platform** — iOS, macOS, and Mac Catalyst
+- **Zero dependencies** — Uses only Foundation and Security
 
-```swift
-/// Save data
-Keychain.default.set(1, forKey: "key.int.value")
-Keychain.default.set([1, 2, 3], forKey: "key.array.value")
-Keychain.default.set("string value", forKey: "key.string.value")
-```
+## Installation
 
-You can retrieve values from the Keychain. All getter methods return `T?`. If the data corresponding to `forKey` cannot be decoded back to `T`, it returns `nil`.
+Add the KeychainKit Xcode project as a dependency to your project and link the `KeychainKit.framework` to your target.
 
-```swift
-/// Load data
-Keychain.default.object(of: Int.self, forKey: "key.int.value")
-Keychain.default.object(of: Array.self, forKey: "key.array.value")
-Keychain.default.string(forKey: "key.string.value")
-```
+## Usage
 
-You can remove data from the Keychain. The method returns a `Bool` indicating whether the deletion was successful.
+### Basic Operations
 
-```swift
-Keychain.default.removeObject(forKey: "key.to.be.deleted")
-```
+Use the `default` singleton for quick access — it uses your bundle identifier as the service name.
 
-## Customization
-
-### Specify Service Name
-
-When you use the `default` Keychain object, all keys are linked to your main bundle identifier as the service name. However, you can change it as follows:
+**Store values:**
 
 ```swift
-let serviceName = "Custom.Service.Name"
-let keychain = Keychain(serviceName: serviceName)
+Keychain.default.set(42, forKey: "user.age")
+Keychain.default.set("hello", forKey: "user.greeting")
+Keychain.default.set([1, 2, 3], forKey: "user.favorites")
 ```
 
-### Specify Access Group
-
-You can also share Keychain items through a customized access group:
+**Retrieve values:**
 
 ```swift
-let serviceName = "Custom.Service.Name"
-let accessGroup = "Shared.Access.Group"
-let keychain = Keychain(serviceName: serviceName, accessGroup: accessGroup)
+let age = Keychain.default.object(of: Int.self, forKey: "user.age")
+let greeting = Keychain.default.string(forKey: "user.greeting")
+let favorites = Keychain.default.object(of: [Int].self, forKey: "user.favorites")
 ```
 
-The `default` Keychain object does not share any Keychain items, and its `accessGroup` is `nil`.
+**Remove values:**
+
+```swift
+Keychain.default.removeObject(forKey: "user.age")
+Keychain.default.removeAllKeys()
+```
+
+### Property Wrappers
+
+Declare Keychain-backed properties directly on your types:
+
+```swift
+struct Settings {
+    @KeychainStoreString(key: "api.token")
+    var apiToken: String?
+
+    @KeychainStoreNumber(key: "login.count")
+    var loginCount: Int?
+
+    @KeychainStoreObject(key: "user.profile")
+    var profile: UserProfile?
+}
+```
+
+### Custom Service Name
+
+By default, the `default` Keychain uses your main bundle identifier as the service name. You can create a Keychain instance with a custom service name:
+
+```swift
+let keychain = Keychain(serviceName: "com.example.MyService")
+```
+
+### Access Groups
+
+Share Keychain items between apps and extensions using access groups:
+
+```swift
+let keychain = Keychain(
+    serviceName: "com.example.MyService",
+    accessGroup: "TEAM_ID.com.example.shared"
+)
+```
+
+You can also set a default access group for all new `Keychain` instances:
+
+```swift
+Keychain.defaultAccessGroup = "TEAM_ID.com.example.shared"
+```
 
 ### Accessibility
 
-By default, all items saved by `Keychain` can only be accessed when the device is unlocked. The `enum KeychainItemAccessibility` provides a customization point to specify a different accessibility level.
+Control when Keychain items are accessible. The default is `.whenUnlocked`.
 
 ```swift
-Keychain.default.set(1, forKey: "key.int.value", withAccessibility: .afterFirstUnlock)
+Keychain.default.set(
+    "secret",
+    forKey: "auth.token",
+    withAccessibility: .afterFirstUnlock
+)
 ```
 
-The `kSecAttrAccessibleAlways` and `kSecAttrAccessibleAlwaysThisDeviceOnly` attributes were deprecated in iOS 12.0, so we do not include them in `KeychainItemAccessibility`.
+Available accessibility levels:
+
+| Level | Description |
+|---|---|
+| `.whenUnlocked` | Only when the device is unlocked (default) |
+| `.whenUnlockedThisDeviceOnly` | When unlocked, not included in backups |
+| `.afterFirstUnlock` | After first unlock following a restart |
+| `.afterFirstUnlockThisDeviceOnly` | After first unlock, not included in backups |
+| `.whenPasscodeSetThisDeviceOnly` | Only when a passcode is set |
+
+### Querying Keys
+
+```swift
+// Check if a key exists
+if Keychain.default.hasValue(forKey: "auth.token") { ... }
+
+// Get all stored keys
+let keys = Keychain.default.allKeys()
+
+// Check the accessibility of a key
+let accessibility = Keychain.default.accessibilityOfKey("auth.token")
+```
 
 ## License
 
-KeychainKit is released under the MIT license. See the LICENSE file for details.
+KeychainKit is released under the [MIT License](LICENSE).
