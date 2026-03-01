@@ -5,6 +5,11 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
+### Added
+- Comprehensive API documentation for all public types using Swift's native `/// ...` markup
+  - `Keychain` class and `KeychainAccessGroup` class including all public properties, initializers, and methods
+  - `KeychainItemAccessibility` enum and `KeychainAttrReprentable` protocol with Security framework mappings
+  - `KeychainStoreString`, `KeychainStoreNumber`, and `KeychainStoreObject` property wrappers
 
 ## [November 2024]
 ### Added
