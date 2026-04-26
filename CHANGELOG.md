@@ -6,69 +6,43 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 ### Added
-- Comprehensive API documentation for all public types using Swift's native `/// ...` markup
-  - `Keychain` class and `KeychainAccessGroup` class including all public properties, initializers, and methods
-  - `KeychainItemAccessibility` enum and `KeychainAttrReprentable` protocol with Security framework mappings
-  - `KeychainStoreString`, `KeychainStoreNumber`, and `KeychainStoreObject` property wrappers
+- Documentation for all public APIs, including the keychain wrapper, access groups, accessibility options, and property wrappers.
 
 ## [November 2024]
 ### Added
-- Method to set default access group in Objective-C
-- Dictionary usage example
+- Method to set the default access group from Objective-C.
+- Dictionary usage example.
 
 ## [September 2024]
 ### Added
-- Demo project
+- Demo project.
 
 ### Removed
-- Obsolete files
-
-### Changed
-- Project cleanup
+- Obsolete files.
 
 ## [December 2020]
 ### Removed
-- Demo application
-- Test application
+- Demo and test applications.
 
 ## [November 2019]
 ### Added
-- Swift Package Manager (SPM) support
-- Git ignore file
-
-### Changed
-- Updated unit tests
+- Swift Package Manager support.
 
 ## [September 2019]
 ### Added
-- Property wrapper support for Keychain items
-
-### Changed
-- Updated unit tests for property wrappers
-- Updated Travis CI configuration
+- Property wrapper support for keychain items.
 
 ## [August 2019]
 ### Added
-- Video session references in documentation
+- Video session references in the documentation.
 
 ## [July 2019]
 ### Added
-- Floating point number test case
-- README documentation with logo
-- MIT license
-- Travis CI integration with code coverage
-- Access group tests
-- Accessibility attribute value tests
-- Codecov integration
+- README, MIT license, and CI integration.
 
 ### Changed
-- Simplified all APIs to return nil for errors instead of throwing
-- Updated code style
-
-### Removed
-- Unused attributes
-- Old testing host project
+- All APIs now return nil on error instead of throwing.
 
 ## [July 2019 - Initial Release]
 ### Added
-- Initial commit with core Keychain wrapper functionality
+- Initial release with the core keychain wrapper.
