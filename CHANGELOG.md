@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ### Added
 - Documentation for all public APIs, including the keychain wrapper, access groups, accessibility options, and property wrappers.
 
+### Fixed
+- On macOS, storing a second key under the same service no longer fails with a duplicate item error; items stored by earlier versions on macOS are not found any more and have to be stored again.
+
 ## [November 2024]
 ### Added
 - Method to set the default access group from Objective-C.

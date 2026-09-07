@@ -741,7 +741,13 @@ open class Keychain {
         let encodedKey = key.data(using: .utf8)
 
         queryDictionary[secAttrGeneric] = encodedKey
+        #if os(macOS)
+        // The file based macOS keychain stores a `Data` account as NULL, so every key would
+        // collide with the first item stored. The account must be a string there.
+        queryDictionary[secAttrAccount] = key
+        #else
         queryDictionary[secAttrAccount] = encodedKey
+        #endif
 
         return queryDictionary
     }
