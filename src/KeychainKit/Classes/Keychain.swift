@@ -646,6 +646,10 @@ open class Keychain {
     open func removeAllKeys() -> Bool {
         var queryDictionary: [String: Any] = [secClass: kSecClassGenericPassword]
         queryDictionary[secAttrService] = self.serviceName
+        #if os(macOS)
+        // The file based macOS keychain deletes only the first match unless told otherwise.
+        queryDictionary[secMatchLimit] = kSecMatchLimitAll
+        #endif
 
         if let accessGroup {
             queryDictionary[secAttrAccessGroup] = accessGroup
