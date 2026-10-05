@@ -8,19 +8,7 @@
 
 import Foundation
 
-/// A protocol that defines the ability to convert a keychain accessibility value
-/// to its corresponding `CFString` representation in the Security framework.
-///
-/// Types conforming to this protocol can be used with Security framework functions
-/// such as `SecItemAdd`, `SecItemUpdate`, and `SecItemCopyMatching` by providing
-/// the appropriate `kSecAttrAccessible` attribute value.
-///
-/// - SeeAlso: `KeychainItemAccessibility`
 protocol KeychainAttrReprentable {
-    /// The `CFString` value representing this accessibility level in the Security framework.
-    ///
-    /// This value corresponds to one of the `kSecAttrAccessible*` constants defined in
-    /// the Security framework and is used when constructing keychain query dictionaries.
     var keychainAttrValue: CFString { get }
 }
 
@@ -96,19 +84,6 @@ public enum KeychainItemAccessibility {
     /// Maps to `kSecAttrAccessibleWhenUnlockedThisDeviceOnly` in the Security framework.
     case whenUnlockedThisDeviceOnly
 
-    /// Creates a ``KeychainItemAccessibility`` value from a raw `CFString` attribute
-    /// returned by the Security framework.
-    ///
-    /// This method performs a reverse lookup against the known `kSecAttrAccessible*`
-    /// constants to find the corresponding enum case. It is primarily used when reading
-    /// keychain item attributes via `SecItemCopyMatching` to convert the raw accessibility
-    /// attribute back into a strongly-typed enum value.
-    ///
-    /// - Parameter keychainAttrValue: A `CFString` value corresponding to one of the
-    ///   `kSecAttrAccessible*` constants from the Security framework.
-    /// - Returns: The matching ``KeychainItemAccessibility`` case, or `nil` if the
-    ///   provided value does not match any known accessibility constant.
-    /// - SeeAlso: ``keychainAttrValue``
     static func accessbilityForAttributeValue(_ keychainAttrValue: CFString) -> KeychainItemAccessibility? {
         for (key, value) in keychainAccessibilityLookup {
             if value == keychainAttrValue {
@@ -121,14 +96,6 @@ public enum KeychainItemAccessibility {
 }
 
 extension KeychainItemAccessibility: KeychainAttrReprentable {
-    /// The `CFString` representation of this accessibility level for use in Security
-    /// framework keychain queries.
-    ///
-    /// Converts this enum case to the corresponding `kSecAttrAccessible*` constant.
-    /// The returned value is used when constructing query dictionaries for
-    /// `SecItemAdd`, `SecItemUpdate`, and `SecItemCopyMatching`.
-    ///
-    /// - SeeAlso: ``accessbilityForAttributeValue(_:)``
     var keychainAttrValue: CFString {
         keychainAccessibilityLookup[self]!
     }

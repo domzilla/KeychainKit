@@ -8,7 +8,6 @@
 
 import Foundation
 
-/// Keychain service attributes
 private let secMatchLimit: String = kSecMatchLimit as String
 private let secReturnData: String = kSecReturnData as String
 private let secValueData: String = kSecValueData as String
@@ -686,7 +685,6 @@ open class Keychain {
 
     // MARK: - Private Methods
 
-    /// Remove all items for a given keychain item class.
     @discardableResult
     private class func deleteKeychainSecClass(
         _ destSecClass: AnyObject
@@ -699,7 +697,6 @@ open class Keychain {
         return status == errSecSuccess
     }
 
-    /// Update existing data associated with a key name.
     private func update(
         _ value: Data,
         forKey key: String,
@@ -719,12 +716,6 @@ open class Keychain {
         return status == errSecSuccess
     }
 
-    /// Setup the query dictionary used to access the keychain on iOS for a specific key name.
-    ///
-    /// - parameter forKey: The key this query is for
-    /// - parameter withAccessibility: Optional accessibility to use when setting the keychain item.
-    /// Default to `.whenUnlocked`
-    /// - returns: A dictionary with all the needed properties setup to access the keychain on iOS.
     private func setupQueryDictionary(
         forKey key: String,
         withAccessibility accessibility: KeychainItemAccessibility? = nil
