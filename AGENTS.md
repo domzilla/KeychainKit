@@ -4,67 +4,17 @@
 KeychainKit is a lightweight Swift wrapper for the iOS and macOS Keychain. It provides a `UserDefaults`-like API for securely storing, retrieving, and managing data in the Keychain. Supports `Codable` types, property wrappers, and access group sharing for app extensions.
 
 ## Tech Stack
-- **Language**: Swift 6
+- **Language**: Swift
 - **Type**: Xcode Framework
-- **Target-Platforms**: iOS 15.0+ / macOS 13.0+ / Mac Catalyst
+- **Target-Platforms**: iOS / macOS / Mac Catalyst
 - **Dependencies**: None (uses Foundation and Security frameworks only)
 
-## Style & Conventions (MANDATORY)
-Style guides are loaded automatically via `~/.claude/rules/` based on file type.
-- **Swift** (`*.swift`): `~/Agents/Style/swift-swiftui-style-guide.md`
-
-## Changelog (MANDATORY)
-**All important user facing changes** (fixes, additions, deletions, changes) must be written to CHANGELOG.md.
-Changelog format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
-
-## Logging (MANDATORY)
-
-### Swift (DZFoundation)
-```swift
-import DZFoundation
-
-DZLog("Starting fetch")       // General debug output
-DZErrorLog(error)             // Conditional error logging (only prints if error is non-nil)
-```
-
-**Do NOT use:**
-- `print()` / `NSLog()` for debug output
-- `os.Logger` instances
-
-All logging functions are no-ops in release builds.
-
-**Note:** KeychainKit currently has no logging. If logging is added, import DZFoundation and use `DZLog` / `DZErrorLog`.
-
-## API Documentation
-Local Apple API documentation is available at:
-`~/Agents/API Documentation/Apple/`
-
-```bash
-~/Agents/API\ Documentation/Apple/search --help  # Run once per session
-~/Agents/API\ Documentation/Apple/search "SecItemAdd" --language swift
-~/Agents/API\ Documentation/Apple/search "kSecClassGenericPassword" --language swift
-```
-
-## Xcode Project Files (CATASTROPHIC — DO NOT TOUCH)
-- **NEVER edit Xcode project files** (`.xcodeproj`, `.xcworkspace`, `project.pbxproj`, `.xcsettings`, etc.)
-- Editing these files will corrupt the project — this is **catastrophic and unrecoverable**
-- Only the user edits project settings, build phases, schemes, and file references manually in Xcode
-- If a file needs to be added to the project, **stop and tell the user** — do not attempt it yourself
-- Use `xcodebuild` for building/testing only — never for project manipulation
-- **Exception**: Only proceed if the user gives explicit permission for a specific edit
-
-## File System Synchronized Groups (Xcode 16+)
-This project uses **File System Synchronized Groups** (internally `PBXFileSystemSynchronizedRootGroup`), introduced in Xcode 16. This means:
-- The `Classes/` and `Resources/` directories are **directly synchronized** with the file system
-- **You CAN freely create, move, rename, and delete files** in these directories
-- Xcode automatically picks up all changes — no project file updates needed
-- This is different from legacy Xcode groups, which required manual project file edits
-
-**Bottom line:** Modify source files in `Classes/` and `Resources/` freely. Just never touch the `.xcodeproj` files themselves.
+## Guides (MANDATORY)
+- Swift style: `~/Agents/Style/swift-swiftui-style-guide.md`
+- Accessibility: `~/Agents/Guides/accessibility-guide.md`
+- Xcode projects: `~/Agents/Guides/xcode-project-guide.md`
 
 ## Build Commands
-**MANDATORY:** Never write build output into the project directory; use Xcode's default DerivedData location or pass `-derivedDataPath` pointing outside the project tree.
 ```bash
 # Build (iOS)
 xcodebuild -project src/KeychainKit.xcodeproj -scheme KeychainKit \
@@ -82,25 +32,8 @@ xcodebuild -project src/KeychainKit.xcodeproj -scheme KeychainKit clean
 
 No test targets exist in this project.
 
-## Code Formatting — Swift Only (MANDATORY)
-**Always run SwiftFormat after modifying Swift files:**
-```bash
-swiftformat .
-```
-
-SwiftFormat configuration is defined in `.swiftformat` at the project root. This enforces:
-- 4-space indentation
-- Explicit `self.` usage
-- K&R brace style (Swift only — Objective-C uses Allman style per the ObjC style guide)
-- Trailing commas in collections
-- Consistent wrapping rules
-
-**Do not commit unformatted Swift code.**
-
-Objective-C files are not auto-formatted — follow the ObjC style guide manually.
-
----
+## Testing (MANDATORY)
+No test targets exist in this project.
 
 ## Notes
-- All public APIs must have documentation comments
 - This framework has no user-facing strings — localization is not applicable
