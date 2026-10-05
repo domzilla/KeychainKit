@@ -32,8 +32,6 @@ xcodebuild -project src/KeychainKit.xcodeproj -scheme KeychainKit \
 xcodebuild -project src/KeychainKit.xcodeproj -scheme KeychainKit clean
 ```
 
-No test targets exist in this project.
-
 ## Testing (MANDATORY)
 No test targets exist in this project.
 
