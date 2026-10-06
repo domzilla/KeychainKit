@@ -10,6 +10,10 @@ labels:
 
 > **Note:** Agent-generated from an automated doc/code review. This may be a false positive — analyze and confirm against the code before fixing.
 
+## Parent
+
+261006-0RTWDD8
+
 `deleteKeychainSecClass` (Keychain.swift:690-698) queries only `kSecClass`, with no `kSecMatchLimitAll`. On the file-based macOS keychain `SecItemDelete` removes only the first match. `removeAllKeys()` already handles this (Keychain.swift:649-652).
 Impact: on macOS `wipeKeychain()` leaves most items behind.
 Fix: add `secMatchLimit: kSecMatchLimitAll` under `#if os(macOS)`, as `removeAllKeys()` does.

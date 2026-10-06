@@ -10,6 +10,10 @@ labels:
 
 > **Note:** Agent-generated from an automated doc/code review. This may be a false positive — analyze and confirm against the code before fixing.
 
+## Parent
+
+261006-0RTWDD8
+
 On macOS `setupQueryDictionary` stores `kSecAttrAccount` as a `String` (Keychain.swift:743), but `allKeys()` only reads it back as `Data` (Keychain.swift:304).
 Impact: every macOS account fails the `as? Data` cast, so `allKeys()` returns an empty set even when items exist.
 Fix: also accept `attr[secAttrAccount] as? String`, or fall back to the `kSecAttrGeneric` data.
