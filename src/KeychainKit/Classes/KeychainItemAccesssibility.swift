@@ -24,7 +24,7 @@ protocol KeychainAttrReprentable {
 /// or device migration). Use these when the stored secret is inherently tied to the
 /// current device (e.g., device-specific tokens).
 ///
-/// When no accessibility is explicitly specified in ``Keychain`` operations, the
+/// When no accessibility is specified while storing a new item via ``Keychain``, the
 /// framework defaults to ``whenUnlocked``.
 ///
 /// - SeeAlso: `KeychainAttrReprentable`

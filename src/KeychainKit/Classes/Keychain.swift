@@ -62,8 +62,9 @@ public class KeychainAccessGroup: NSObject {
 ///
 /// All items are stored using the `kSecClassGenericPassword` keychain item class. Keys are
 /// encoded as UTF-8 `Data` and stored in both the `kSecAttrGeneric` and `kSecAttrAccount`
-/// attributes. Items are scoped to a configurable service name (defaulting to
-/// `Bundle.main.bundleIdentifier`, with a fallback of `"Keychain"`).
+/// attributes (on macOS, `kSecAttrAccount` holds the key as a plain string). Items are
+/// scoped to a configurable service name (defaulting to `Bundle.main.bundleIdentifier`,
+/// with a fallback of `"Keychain"`).
 ///
 /// ## Basic Usage
 ///
@@ -421,8 +422,8 @@ open class Keychain {
     /// (``string(forKey:withAccessibility:)``, ``object(of:forKey:withAccessibility:)-4lcpw``,
     /// etc.) ultimately call this method to fetch the underlying data.
     ///
-    /// The query is constructed using the key (encoded as UTF-8 data in both `kSecAttrGeneric`
-    /// and `kSecAttrAccount`), the instance's ``serviceName``, and optionally the ``accessGroup``
+    /// The query is constructed using the key (in `kSecAttrGeneric` and `kSecAttrAccount`),
+    /// the instance's ``serviceName``, and optionally the ``accessGroup``
     /// and the specified accessibility level.
     ///
     /// - Parameters:
@@ -477,7 +478,7 @@ open class Keychain {
     ///   - value: The `Encodable` value to store.
     ///   - key: The key to associate with the stored value.
     ///   - accessibility: An optional accessibility level for the keychain item.
-    ///     When `nil`, defaults to ``KeychainItemAccessibility/whenUnlocked``.
+    ///     When `nil`, new items default to ``KeychainItemAccessibility/whenUnlocked``.
     /// - Returns: `true` if the value was successfully stored, `false` if encoding or the
     ///   keychain operation failed.
     @discardableResult
@@ -508,7 +509,7 @@ open class Keychain {
     ///   - value: The `Numeric` and `Encodable` value to store.
     ///   - key: The key to associate with the stored value.
     ///   - accessibility: An optional accessibility level for the keychain item.
-    ///     When `nil`, defaults to ``KeychainItemAccessibility/whenUnlocked``.
+    ///     When `nil`, new items default to ``KeychainItemAccessibility/whenUnlocked``.
     /// - Returns: `true` if the value was successfully stored, `false` if encoding or the
     ///   keychain operation failed.
     @discardableResult
@@ -537,7 +538,7 @@ open class Keychain {
     ///   - value: The string value to store.
     ///   - key: The key to associate with the stored value.
     ///   - accessibility: An optional accessibility level for the keychain item.
-    ///     When `nil`, defaults to ``KeychainItemAccessibility/whenUnlocked``.
+    ///     When `nil`, new items default to ``KeychainItemAccessibility/whenUnlocked``.
     /// - Returns: `true` if the value was successfully stored, `false` if UTF-8 encoding
     ///   or the keychain operation failed.
     @discardableResult
@@ -566,7 +567,7 @@ open class Keychain {
     ///   - value: The raw `Data` to store.
     ///   - key: The key to associate with the stored value.
     ///   - accessibility: An optional accessibility level for the keychain item.
-    ///     When `nil`, defaults to ``KeychainItemAccessibility/whenUnlocked``.
+    ///     When `nil`, new items default to ``KeychainItemAccessibility/whenUnlocked``.
     /// - Returns: `true` if the data was successfully stored (either added or updated),
     ///   `false` if the keychain operation failed.
     @discardableResult
@@ -601,8 +602,8 @@ open class Keychain {
     /// Removes a single keychain item associated with the specified key.
     ///
     /// If you are re-using a key but with a different accessibility level, you should
-    /// call this method to delete the previous value first, since keychain items with
-    /// different accessibility settings are stored as separate entries.
+    /// call this method to delete the previous value first, since setting a value cannot
+    /// change the accessibility of an existing item.
     ///
     /// ```swift
     /// Keychain.default.removeObject(forKey: "auth-token")
@@ -659,7 +660,7 @@ open class Keychain {
         return status == errSecSuccess
     }
 
-    /// Removes ALL keychain items from the device, regardless of service name, access group, or item class.
+    /// Removes ALL keychain items accessible to this app, regardless of service name, access group, or item class.
     ///
     /// This class method deletes every keychain item across all security classes:
     /// - `kSecClassGenericPassword` (generic passwords)
