@@ -3,10 +3,11 @@ id: '261006-0R84ZBF'
 title: macOS wipeKeychain() deletes only first match per class
 author: Dominic Rodemer
 created_at: '2026-10-06T06:53:56.013712Z'
-status: open
+status: closed
 labels:
 - bug
 ---
+
 
 > **Note:** Agent-generated from an automated doc/code review. This may be a false positive — analyze and confirm against the code before fixing.
 

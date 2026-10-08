@@ -689,7 +689,12 @@ open class Keychain {
     )
         -> Bool
     {
-        let queryDictionary = [secClass: destSecClass]
+        var queryDictionary: [String: Any] = [secClass: destSecClass]
+        #if os(macOS)
+        // The file based macOS keychain deletes only the first match unless told otherwise.
+        queryDictionary[secMatchLimit] = kSecMatchLimitAll
+        #endif
+
         let status = SecItemDelete(queryDictionary as CFDictionary)
 
         return status == errSecSuccess

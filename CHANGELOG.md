@@ -13,6 +13,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - On macOS, `removeAllKeys()` removes every item of the service instead of only the first one.
 - Reading a numeric value no longer crashes when the stored data is an empty array; `nil` is returned instead.
 - Setting a value with a different accessibility level than the existing item now updates the item and its accessibility instead of silently failing.
+- On macOS, `wipeKeychain()` removes every item of each class instead of only the first one.
 
 ## [November 2024]
 ### Added
