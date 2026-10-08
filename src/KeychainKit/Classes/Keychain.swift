@@ -300,12 +300,19 @@ open class Keychain {
         if let results = results as? [[String: AnyObject]] {
             keys = results.reduce(into: Set<String>()) {
                 (result: inout Set<String>, attr: [String: AnyObject]) in
+                #if os(macOS)
+                // The account is stored as a string on macOS, see `setupQueryDictionary`.
+                if let key = attr[secAttrAccount] as? String {
+                    result.insert(key)
+                }
+                #else
                 if
                     let accountData = attr[secAttrAccount] as? Data,
                     let key = String(data: accountData, encoding: .utf8)
                 {
                     result.insert(key)
                 }
+                #endif
             }
         }
 
