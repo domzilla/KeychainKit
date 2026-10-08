@@ -383,7 +383,7 @@ open class Keychain {
             return nil
         }
 
-        return try? JSONDecoder().decode([T].self, from: data)[0]
+        return (try? JSONDecoder().decode([T].self, from: data))?.first
     }
 
     /// Retrieves a string value from the keychain for the specified key.
