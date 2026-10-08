@@ -3,10 +3,11 @@ id: '261006-0R848MZ'
 title: set() with different accessibility than existing item fails
 author: Dominic Rodemer
 created_at: '2026-10-06T06:53:56.027030Z'
-status: open
+status: closed
 labels:
 - bug
 ---
+
 
 > **Note:** Agent-generated from an automated doc/code review. This may be a false positive — analyze and confirm against the code before fixing.
 

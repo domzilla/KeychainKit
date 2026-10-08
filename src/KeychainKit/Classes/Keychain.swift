@@ -561,7 +561,8 @@ open class Keychain {
     ///
     /// The method first attempts to add the item using `SecItemAdd`. If an item with
     /// the same key already exists (`errSecDuplicateItem`), it falls back to updating
-    /// the existing item using `SecItemUpdate`.
+    /// the existing item using `SecItemUpdate`. When an accessibility level is given, the
+    /// existing item is updated to that level as well.
     ///
     /// - Parameters:
     ///   - value: The raw `Data` to store.
@@ -600,10 +601,6 @@ open class Keychain {
     // MARK: - Removal
 
     /// Removes a single keychain item associated with the specified key.
-    ///
-    /// If you are re-using a key but with a different accessibility level, you should
-    /// call this method to delete the previous value first, since setting a value cannot
-    /// change the accessibility of an existing item.
     ///
     /// ```swift
     /// Keychain.default.removeObject(forKey: "auth-token")
@@ -705,10 +702,14 @@ open class Keychain {
     )
         -> Bool
     {
-        let queryDictionary = self.setupQueryDictionary(
-            forKey: key, withAccessibility: accessbility
-        )
-        let updateDictionary = [secValueData: value]
+        // Accessibility is not part of the item's primary key: match without it so an existing
+        // item with a different level is found, and apply the new level in the update.
+        let queryDictionary = self.setupQueryDictionary(forKey: key, withAccessibility: nil)
+        var updateDictionary: [String: Any] = [secValueData: value]
+
+        if let accessbility {
+            updateDictionary[secAttrAccessible] = accessbility.keychainAttrValue
+        }
 
         let status = SecItemUpdate(
             queryDictionary as CFDictionary, updateDictionary as CFDictionary

@@ -12,6 +12,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - On macOS, storing a second key under the same service no longer fails with a duplicate item error; items stored by earlier versions on macOS are not found any more and have to be stored again.
 - On macOS, `removeAllKeys()` removes every item of the service instead of only the first one.
 - Reading a numeric value no longer crashes when the stored data is an empty array; `nil` is returned instead.
+- Setting a value with a different accessibility level than the existing item now updates the item and its accessibility instead of silently failing.
 
 ## [November 2024]
 ### Added

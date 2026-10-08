@@ -17,6 +17,6 @@ Fix the correctness bugs found in the automated review of `Keychain.swift`: a cr
 Proposed sequence, top to bottom. Check off each sub-item when it is closed.
 
 - [x] 261006-0R84TXV — Numeric object(of:) crashes on empty array data (blocked by: none)
-- [ ] 261006-0R848MZ — set() with different accessibility than existing item fails (blocked by: none)
+- [x] 261006-0R848MZ — set() with different accessibility than existing item fails (blocked by: none)
 - [ ] 261006-0R84ZBF — macOS wipeKeychain() deletes only first match per class (blocked by: none)
 - [ ] 261006-0R8403F — macOS allKeys() returns empty set (blocked by: none)
